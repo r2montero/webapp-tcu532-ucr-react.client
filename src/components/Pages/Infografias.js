@@ -39,7 +39,7 @@ const data = [
   },
 ];
 
-class Infografia extends Component {
+class Infografias extends Component {
   state = {
     data: data,
   };
@@ -47,7 +47,7 @@ class Infografia extends Component {
   render() {
     return (
       <>
-          <h1>Materiales</h1>
+        <h1>Materiales</h1>
         <Container>
           <br />
           <div>
@@ -92,4 +92,4 @@ class Infografia extends Component {
   }
 }
 
-export default Infografia;
+export default Infografias;

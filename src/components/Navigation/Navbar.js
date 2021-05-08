@@ -1,8 +1,8 @@
-import Reac, { Component } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {IoExitSharp} from 'react-icons/io5';
 
-class Navigation extends Component {
+class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,4 +46,4 @@ class Navigation extends Component {
   }
 }
 
-export default Navigation;
+export default Navbar;
