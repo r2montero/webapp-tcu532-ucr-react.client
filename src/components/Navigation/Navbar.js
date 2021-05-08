@@ -1,4 +1,4 @@
-import Reac, { Component } from "react";
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {IoExitSharp} from 'react-icons/io5';
 
