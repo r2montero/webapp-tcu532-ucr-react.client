@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card-grid {
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  padding-left: 70px;
+  padding-top: 15px;
+}
+
+.card-item {
+  margin: 20px;
+}
+
+.dash-title {
+  padding-left: 15px;
+}
