@@ -5,7 +5,7 @@ import Sidebar from '../components/navigation/Sidebar';
 import Home from '../components/pages/Inicio';
 import Temas from '../components/pages/Temas';
 import Multimedia from '../components/pages/Multimedia';
-import Configuración from '../components/pages/Configuracion';
+import Configuracion from '../components/pages/Configuracion';
 
 import '../assets/css/App.css';
 
@@ -27,7 +27,7 @@ export const DashboardRouter = () => {
                     <Route exact path='/' component={Home} />
                     <Route exact path='/materiales' component={Multimedia} />
                     <Route exact path='/temas' component={Temas} />
-                    <Route exact path='/config' component={Configuración} />
+                    <Route exact path='/config' component={Configuracion} />
 
                     <Redirect to='/' />
                 </Switch>
