@@ -15,7 +15,8 @@ export const getAllMultimedia = async () => {
                 name: m.name,
                 type: m.type,
                 link: m.storage_link,
-                description: m.description
+                description: m.description,
+                autor: m.autor
             }
         });
 
