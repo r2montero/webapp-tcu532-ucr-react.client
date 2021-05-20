@@ -14,7 +14,7 @@ header{
   height: 80px;
   background: #6dc067;
 }
-
+/*
 .sidenav{
   width: 240px;
   background: #6dc067;
@@ -25,10 +25,10 @@ header{
   left: -100%;
 }
 
-.sidenav.active{
+/*.sidenav.active{
   left: 0;
-}
-
+}*/
+/*
 .logo{
   width: 250px;
 }
@@ -77,4 +77,8 @@ header svg{
   align-items: center;
   font-size: 40px;
   color: rgb(230,230,230);
+}*/
+
+.multiadd-btn{
+  left: 70%;
 }

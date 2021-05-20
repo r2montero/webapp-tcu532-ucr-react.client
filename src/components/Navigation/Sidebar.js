@@ -8,8 +8,6 @@ import {IoExitOutline} from 'react-icons/io5'
 
 const Sidebar = ({show}) => {
   return (
-    <div className={show ? 'sidenav active' : 'sidenav'}>
-      <img src={logo} alt='logo' className='logo'/>
       <ul>
         <li><Link to='/' ><FaHome/>Inicio</Link></li>
         <li><Link to='/materiales'><GiNothingToSay/>Multimedia</Link></li>
@@ -17,7 +15,7 @@ const Sidebar = ({show}) => {
         <li><Link to='/config'><GrConfigure/>Configuración</Link></li>
         <li><a href='/login'><IoExitOutline/>Salir</a></li>
       </ul>
-    </div>
+    
   )
 }
 export default Sidebar

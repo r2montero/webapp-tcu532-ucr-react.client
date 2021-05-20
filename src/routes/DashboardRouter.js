@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import Sidebar from '../components/navigation/Sidebar';
+import Navbar from '../components/navigation/Navbar';
 import Home from '../components/pages/Inicio';
 import Temas from '../components/pages/Temas';
 import Multimedia from '../components/pages/Multimedia';
@@ -16,12 +17,10 @@ export const DashboardRouter = () => {
 
     return (
         <>
-            <header>
-                <h6 className='menu'>Menu</h6> <GiHamburgerMenu onClick={() => setShowNav(!showNav)} />
-            </header>
-
-            <Sidebar show={showNav} />
-
+            
+            <Navbar show={showNav} />
+           
+            
             <div>
                 <Switch>
                     <Route exact path='/' component={Home} />
