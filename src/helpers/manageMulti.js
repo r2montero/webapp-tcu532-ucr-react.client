@@ -1,7 +1,6 @@
 import axios from 'axios';
-import env from "react-dotenv";
 
-const URI = env.API_URL + 'multimedia/';
+const URI = process.env.REACT_APP_API_URL + 'multimedia/';
 
 console.log(URI);
 
@@ -31,13 +30,13 @@ export const getAllMultimedia = async () => {
 }
 
 export const agregar = () => {
-    
+
 }
 
 export const editar = (id) => {
-    
+
 }
 
 export const eliminar = (id) => {
-    
+
 }
