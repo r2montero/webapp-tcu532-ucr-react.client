@@ -27,3 +27,12 @@ code {
 .dash-title {
   padding-left: 15px;
 }
+
+.load-spinner {  
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 44%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { GiHamburgerMenu } from 'react-icons/gi';
-import Sidebar from '../components/navigation/Sidebar';
+import { Switch, Route } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
-import Home from '../components/pages/Inicio';
+import Inicio from '../components/pages/Inicio';
 import Temas from '../components/pages/Temas';
 import Multimedia from '../components/pages/Multimedia';
 import Configuracion from '../components/pages/Configuracion';
@@ -17,18 +15,17 @@ export const DashboardRouter = () => {
 
     return (
         <>
-            
+
             <Navbar show={showNav} />
-           
-            
+
+
             <div>
                 <Switch>
-                    <Route exact path='/' component={Home} />
-                    <Route exact path='/materiales' component={Multimedia} />
-                    <Route exact path='/temas' component={Temas} />
-                    <Route exact path='/config' component={Configuracion} />
+                    <Route exact path='/dashboard' component={Inicio} />
+                    <Route exact path='/dashboard/materiales' component={Multimedia} />
+                    <Route exact path='/dashboard/temas' component={Temas} />
+                    <Route exact path='/dashboard/config' component={Configuracion} />
 
-                    <Redirect to='/' />
                 </Switch>
             </div>
         </>
