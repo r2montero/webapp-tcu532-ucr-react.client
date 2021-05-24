@@ -1,22 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
-import Inicio from '../components/pages/Inicio';
-import Temas from '../components/pages/Temas';
-import Multimedia from '../components/pages/Multimedia';
-import Configuracion from '../components/pages/Configuracion';
+import Inicio from '../components/pages/admin/Inicio';
+import Temas from '../components/pages/admin/Temas';
+import Multimedia from '../components/pages/admin/Multimedia';
+import Configuracion from '../components/pages/admin/Configuracion';
 
 import '../assets/css/App.css';
 
-
 export const DashboardRouter = () => {
-
-    const [showNav, setShowNav] = useState(false);
 
     return (
         <>
 
-            <Navbar show={showNav} />
+            <Navbar />
 
 
             <div>

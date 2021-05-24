@@ -8,7 +8,7 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { LoginScreen } from '../components/auth/LoginScreen';
-import { Home } from '../components/pages/Home';
+import { Home } from '../components/pages/public/Home';
 import { DashboardRouter } from './DashboardRouter';
 import { startChecking } from '../actions/auth'
 import '../index.css';
@@ -22,7 +22,9 @@ export const AppRouter = () => {
 
     const dispatch = useDispatch();
 
-    const { checking, uid } = useSelector(state => state.auth);
+    const { checking, uid, name } = useSelector(state => state.auth);
+
+    console.log(checking, !!uid, name)
 
     useEffect(() => {
         dispatch(startChecking());
@@ -44,7 +46,7 @@ export const AppRouter = () => {
                 <Switch>
                     <Route exact path='/' component={Home} />
                     <PublicRoute exact path='/login' component={LoginScreen} isAuthenticated={!!uid} />
-                    <PrivateRoute exact path='/dashboard' component={DashboardRouter} isAuthenticated={!!uid} />
+                    <PrivateRoute path='/dashboard' component={DashboardRouter} isAuthenticated={!!uid} />
 
                     <Redirect to='/' />
                 </Switch>

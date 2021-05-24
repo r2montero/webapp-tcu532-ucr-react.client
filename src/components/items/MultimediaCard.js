@@ -3,7 +3,6 @@ import {
   Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle
 } from 'reactstrap';
-import { editar, eliminar } from '../../helpers/manageMulti';
 import audio from '../../assets/imgs/audio.png';
 import docs from '../../assets/imgs/docs.png';
 import otro from '../../assets/imgs/otro.png';
@@ -107,7 +106,7 @@ export const MultimediaCard = (multi) => {
                 <div className={classes.paper}>
                   <h2 id="transition-modal-title">Editar</h2>
                   <p id="transition-modal-description">react-transition-group animates me.</p>
-                  /**agregar funcionalidad para editar */
+                  {/* agregar funcionalidad para editar  */}
                 </div>
               </Fade>
             </Modal>
@@ -130,7 +129,7 @@ export const MultimediaCard = (multi) => {
                 <div className={classes.paper}>
                   <h2 id="transition-modal-title">Eliminar</h2>
                   <p id="transition-modal-description">react-transition-group animates me.</p>
-                  /**agregar funcionalidad para eliminar */
+                  {/* agregar funcionalidad para eliminar */}
                 </div>
               </Fade>
             </Modal>
