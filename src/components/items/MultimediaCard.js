@@ -1,24 +1,46 @@
 import React from 'react';
-import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle
-} from 'reactstrap';
 import audio from '../../assets/imgs/audio.png';
 import docs from '../../assets/imgs/docs.png';
 import otro from '../../assets/imgs/otro.png';
 import video from '../../assets/imgs/video.png';
-import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
-import LaunchIcon from '@material-ui/icons/Launch';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+
+const cardUseStyles = makeStyles((theme) => ({
+  cardGrid: {
+    paddingTop: theme.spacing(8),
+    paddingBottom: theme.spacing(8),
+
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+
+  },
+  cardMedia: {
+    paddingTop: '56.25%', // 16:9
+
+  },
+  cardContent: {
+    maxHeight: '100%',
+    maxWidth: '100%',
+  },
+  gridContent: {
+    height: '300px',
+    width: '300px',
+    alignItems: 'center',
+  },
 
 
-
-
+}));
 
 export const MultimediaCard = (multi) => {
   //["Audio", "Documento", "Imagen", "Infografía", "Vídeo", "Otro"]
@@ -47,96 +69,56 @@ export const MultimediaCard = (multi) => {
       break;
   }
 
-  const useStyles = makeStyles((theme) => ({
-    modal: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    paper: {
-      backgroundColor: theme.palette.background.paper,
-      border: '2px solid #000',
-      boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
-    },
-  }));
-
-
-  const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const cardClasses = cardUseStyles();
 
 
   return (
 
 
-
     <div className='card-item'>
-      <Card>
-        <CardImg top width='150px' src={image} alt={multi.name} />
-        <CardBody>
-          <CardTitle tag="h5">{multi.name}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{multi.type}</CardSubtitle>
-          <CardText>{description}</CardText>
-          <div>
-            <Button variant="contained" color="primary" startIcon={<LaunchIcon />} href={multi.link} target='_blank' rel="noreferrer">Abrir</Button> {' '}
-          </div>
-          <div>
-            <Button variant="contained" color="primary" startIcon={<EditIcon />} onClick={handleOpen}>Editar</Button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <h2 id="transition-modal-title">Editar</h2>
-                  <p id="transition-modal-description">react-transition-group animates me.</p>
-                  {/* agregar funcionalidad para editar  */}
-                </div>
-              </Fade>
-            </Modal>
-          </div>
-          <div>
-            <Button variant="contained" color="secondary" startIcon={<DeleteIcon />} onClick={handleOpen}>Eliminar</Button>
-            <Modal
-              aria-labelledby="transition-modal-title"
-              aria-describedby="transition-modal-description"
-              className={classes.modal}
-              open={open}
-              onClose={handleClose}
-              closeAfterTransition
-              BackdropComponent={Backdrop}
-              BackdropProps={{
-                timeout: 500,
-              }}
-            >
-              <Fade in={open}>
-                <div className={classes.paper}>
-                  <h2 id="transition-modal-title">Eliminar</h2>
-                  <p id="transition-modal-description">react-transition-group animates me.</p>
-                  {/* agregar funcionalidad para eliminar */}
-                </div>
-              </Fade>
-            </Modal>
-          </div>
+      <Container className={cardClasses.cardGrid}>
+        {/* End hero unit */}
+        <Grid container spacing={2}>
 
-        </CardBody>
-      </Card>
+          <Grid key={multi.id} className={cardClasses.gridContent}>
+            <Card className={cardClasses.card}>
+              <CardMedia
+                className={cardClasses.cardMedia}
+                image={image}
+                title="Image title"
+              />
+              <CardContent className={cardClasses.cardContent}>
+                <Typography variant="h5">
+                  {multi.name}
+                </Typography>
+                <Typography variant="h6">
+                  {multi.type}
+                </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" color="primary" href={multi.link} target='_blank' rel="noreferrer">
+                  Abrir
+                    </Button>
+                <Button size="small" color="primary"  target='_blank' rel="noreferrer">
+                  Editar
+                </Button>
+                
+                <Button size="small" color="primary" >
+                  Eliminar
+                </Button>
+                
+                <Button size="small" color="primary">
+                  test
+                    </Button>
+
+              </CardActions>
+            </Card>
+          </Grid>
+
+        </Grid>
+      </Container>
+
+
 
     </div>
 

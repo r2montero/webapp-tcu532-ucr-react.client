@@ -12,6 +12,8 @@ import { Home } from '../components/pages/public/Home';
 import { DashboardRouter } from './DashboardRouter';
 import { startChecking } from '../actions/auth'
 import '../index.css';
+import { ClienteRouter } from './ClienteRouter';
+
 
 export const AppRouter = () => {
 
@@ -44,7 +46,7 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route exact path='/' component={Home} />
+                    <Route path='/' component={ClienteRouter} />
                     <PublicRoute exact path='/login' component={LoginScreen} isAuthenticated={!!uid} />
                     <PrivateRoute path='/dashboard' component={DashboardRouter} isAuthenticated={!!uid} />
 

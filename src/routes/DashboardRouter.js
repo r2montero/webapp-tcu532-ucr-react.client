@@ -22,7 +22,7 @@ export const DashboardRouter = () => {
                     <Route exact path='/dashboard/materiales' component={Multimedia} />
                     <Route exact path='/dashboard/temas' component={Temas} />
                     <Route exact path='/dashboard/config' component={Configuracion} />
-
+                
                 </Switch>
             </div>
         </>
