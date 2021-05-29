@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Route, Switch, } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Switch, } from "react-router-dom";
 
 import { css } from "@emotion/react";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
-import { LoginScreen } from '../components/auth/LoginScreen';
-import { Home } from '../components/pages/public/Home';
 import { DashboardRouter } from './DashboardRouter';
 import { startChecking } from '../actions/auth'
 import '../index.css';
@@ -46,10 +44,8 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <Route path='/' component={ClienteRouter} />
-                    <PublicRoute exact path='/login' component={LoginScreen} isAuthenticated={!!uid} />
+                    <PublicRoute path='/' component={ClienteRouter} isAuthenticated={!!uid} />
                     <PrivateRoute path='/dashboard' component={DashboardRouter} isAuthenticated={!!uid} />
-
                     <Redirect to='/' />
                 </Switch>
             </div>

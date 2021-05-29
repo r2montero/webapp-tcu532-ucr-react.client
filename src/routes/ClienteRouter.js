@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { LoginScreen } from '../components/auth/LoginScreen';
 import Navbar from '../components/navigation/Homebar';
 import Multimedia from '../components/pages/public/Multimedia';
 import Inicio from '../components/pages/public/Home';
@@ -17,12 +18,14 @@ export const ClienteRouter = () => {
             <div>
                 <Switch>
                     <Route exact path='/' component={Inicio} />
+                    <Route exact path='/login' component={LoginScreen} />
+
                     <Route exact path='/multimedia' component={Multimedia} />
                     <Route exact path='/acerca' component={Aboutus} />
                     <Route exact path='/temas' component={Temas} />
                 </Switch>
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }
