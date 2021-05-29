@@ -1,6 +1,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import { types } from "../types/types";
+import { cleanSectionsLogout } from '../actions/sections'
 
 const URI = process.env.REACT_APP_API_URL + 'auth/';
 const TOKEN = localStorage.getItem('token') || '';
@@ -86,6 +87,7 @@ const logIn = (user) => ({
 export const startLogout = () => {
     return (dispatch) => {
         localStorage.clear();
+        dispatch(cleanSectionsLogout());
         dispatch(logOut());
     }
 }

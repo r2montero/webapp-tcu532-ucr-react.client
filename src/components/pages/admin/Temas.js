@@ -1,13 +1,49 @@
-import React, { Component } from "react";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Button, makeStyles } from '@material-ui/core';
+import { AddBoxOutlined } from '@material-ui/icons';
+import { SectionFormDialog } from '../../forms/SectionFormDialog';
+import { uiOpenForm } from '../../../actions/ui';
+import { SectionsDataGrid } from '../../items/SectionsDataGrid';
 
-class Temas extends Component{
-    render(){
-        return(
-            <div>
-                <h1>Temas</h1>
-            </div>
-        );
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+        margin: theme.spacing(1),
+    },
+}));
+
+export default function Temas() {
+    const classes = useStyles();
+    const dispatch = useDispatch();
+
+    const handleOpenForm = () => {
+        dispatch(uiOpenForm());
     }
-}
 
-export default Temas;
+    return (
+        <>
+            <h2>Temas / Secciones</h2>
+            <div>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.button}
+                    onClick={handleOpenForm}
+                    startIcon={<AddBoxOutlined />} >Nuevo
+            </Button>
+            </div>
+
+            <div>
+                <div>
+                    <p>
+                        Haga click sobre una fila para editarla o eliminarla
+                    </p>
+                </div>
+                <SectionsDataGrid />
+            </div>
+
+            <SectionFormDialog />
+        </>
+    )
+}
