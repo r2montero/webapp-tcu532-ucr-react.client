@@ -6,7 +6,7 @@ const initialState = {
     msgError: null,
 }
 
-export const uiReducer = (state = initialState, action) => {
+export const uiErrorReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.uiSetError:
             return {

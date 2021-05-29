@@ -72,13 +72,13 @@ export default function ButtonAppBar() {
           <Typography
             variant="button"
             className={classes.menuButton}>
-            {name}
+            <span> {name}</span>
           </Typography>
 
           <Button
             onClick={handleLogout}
             color="inherit">
-            <ExitToApp /> Salir
+            <ExitToApp /> <span> Salir</span>
           </Button>
 
         </Toolbar>
