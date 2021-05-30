@@ -6,6 +6,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 export const PublicRoute = ({
     isAuthenticated,
+    restricted,
     component: Component,
     ...rest
 }) => {
@@ -13,7 +14,7 @@ export const PublicRoute = ({
     return (
         <Route {...rest}
             component={(props) => (
-                (isAuthenticated)
+                (isAuthenticated && restricted)
                     ? (<Redirect to="/dashboard" />)
                     : (<Component {...props} />)
             )}
@@ -24,5 +25,6 @@ export const PublicRoute = ({
 
 PublicRoute.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    component: PropTypes.func.isRequired
+    restricted: PropTypes.bool.isRequired,
+    component: PropTypes.func.isRequired,
 }

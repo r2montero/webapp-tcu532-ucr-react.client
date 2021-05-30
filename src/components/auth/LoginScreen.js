@@ -10,7 +10,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../../assets/css/loginScreen.css';
 
 
-export const LoginScreen = ({ history }) => {
+export const LoginScreen = () => {
 
   const dispatch = useDispatch();
   const { msgError } = useSelector(state => state.ui);
@@ -22,14 +22,11 @@ export const LoginScreen = ({ history }) => {
 
   const { mail, pass } = formLoginValues;
 
-  const lastPath = localStorage.getItem('lastPath') || '/dashboard';
-
   const handleLogin = (e) => {
     e.preventDefault();
 
     if (isValidForm()) {
       dispatch(startLogin(mail, pass));
-      history.replace(lastPath);
     }
 
   }

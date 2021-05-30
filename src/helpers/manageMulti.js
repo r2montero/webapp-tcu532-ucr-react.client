@@ -2,7 +2,6 @@ import axios from 'axios';
 
 const URI = process.env.REACT_APP_API_URL + 'multimedia/';
 
-console.log(URI);
 
 export const getAllMultimedia = async () => {
     try {

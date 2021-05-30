@@ -28,7 +28,13 @@ export const SectionsDataGrid = () => {
 
     return (
         <div style={{ height: 400, width: '50%' }}>
-            <DataGrid rows={sections} columns={columns} getRowId={(row) => row._id} pageSize={5} onRowClick={handleRowClick} />
+            <DataGrid
+                rows={sections}
+                columns={columns}
+                getRowId={(row) => row._id}
+                pageSize={5}
+                onRowClick={handleRowClick}
+            />
         </div>
     );
 }

@@ -1,16 +1,13 @@
-import axios from "axios";
 import Swal from "sweetalert2";
 import { types } from "../types/types";
 import { cleanSectionsLogout } from '../actions/sections'
-
-const URI = process.env.REACT_APP_API_URL + 'auth/';
-const TOKEN = localStorage.getItem('token') || '';
+import { request } from "../helpers/requestsHelper";
 
 export const startLogin = (email, password) => {
 
     return async (dispatch) => {
         try {
-            const { data: { ok, token, uid, name, } } = await axios.post(URI, { email, password });
+            const { ok, token, uid, name, } = await request('auth', { email, password }, 'POST');
 
             if (ok) {
                 localStorage.setItem('token', token);
@@ -49,14 +46,9 @@ export const startLogin = (email, password) => {
 }
 
 export const startChecking = () => {
-    const config = {
-        headers: {
-            'x-token': TOKEN,
-        }
-    }
     return async (dispatch) => {
         try {
-            const { data: { ok, token, uid, name, } } = await axios.get(URI + 'renew', config);
+            const { ok, msg, token, uid, name, } = await request('auth/renew', {}, 'GET', true);
             if (ok) {
                 localStorage.setItem('token', token);
                 localStorage.setItem('token-init-date', new Date().getTime());
@@ -67,11 +59,18 @@ export const startChecking = () => {
                 }));
 
                 console.log('Token Ok!')
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'No puede acceder',
+                    text: msg,
+                    footer: 'Debe iniciar sesión',
+                    backdrop: `rgba(65,173,231,0.6)`
+                });
+                dispatch(checkingFinish());
             }
         } catch (error) {
-            const { status, data: { msg } } = error.response;
-            console.log(status + ' ' + msg);
-
+            console.error(error);
             dispatch(checkingFinish())
         }
     }

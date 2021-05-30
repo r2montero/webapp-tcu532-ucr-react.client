@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Switch, } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 
 import { css } from "@emotion/react";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { LoginScreen } from '../components/auth/LoginScreen';
+import { PublicPagesRouter } from './PublicPagesRouter';
 import { DashboardRouter } from './DashboardRouter';
 import { startChecking } from '../actions/auth'
 import '../index.css';
-import { ClienteRouter } from './ClienteRouter';
 
 
 export const AppRouter = () => {
@@ -21,10 +22,7 @@ export const AppRouter = () => {
                     border-color: blue;`;
 
     const dispatch = useDispatch();
-
-    const { checking, uid, name } = useSelector(state => state.auth);
-
-    console.log(checking, !!uid, name)
+    const { checking, uid } = useSelector(state => state.auth);
 
     useEffect(() => {
         dispatch(startChecking());
@@ -44,11 +42,30 @@ export const AppRouter = () => {
         <Router>
             <div>
                 <Switch>
-                    <PublicRoute path='/' component={ClienteRouter} isAuthenticated={!!uid} />
-                    <PrivateRoute path='/dashboard' component={DashboardRouter} isAuthenticated={!!uid} />
-                    <Redirect to='/' />
+                    <PublicRoute
+                        exact
+                        path='/login'
+                        component={LoginScreen}
+                        isAuthenticated={!!uid}
+                        restricted={true}
+                    />
+
+                    <PrivateRoute
+                        path='/dashboard'
+                        component={DashboardRouter}
+                        isAuthenticated={!!uid}
+                    />
+
+                    <PublicRoute
+                        path='/'
+                        component={PublicPagesRouter}
+                        isAuthenticated={!!uid}
+                        restricted={false}
+                    />
                 </Switch>
             </div>
         </Router>
     )
 }
+
+

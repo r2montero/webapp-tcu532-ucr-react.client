@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export const request = async (endpoint, data, method = 'GET', needToken = false) => {
-    const url = baseUrl + endpoint;
+    const url = BASE_URL + endpoint;
 
     const headers = (nt) => {
         if (nt) {
@@ -25,7 +25,7 @@ export const request = async (endpoint, data, method = 'GET', needToken = false)
         headers: headers(needToken),
         data: JSON.stringify(data),
         validateStatus: function (status) {
-            return status < 501; // Resolve only if the status code is less than 501
+            return status < 404; // Resolve only if the status code is less than 501
         }
     }
 
