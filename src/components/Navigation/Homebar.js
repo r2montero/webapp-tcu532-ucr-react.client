@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import BuildIcon from '@material-ui/icons/Build';
 
 
 
@@ -27,7 +28,7 @@ export default function ButtonAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-          Economía Solidaria
+            Economía Solidaria
           </Typography>
           <Button
             color="inherit"
@@ -40,11 +41,15 @@ export default function ButtonAppBar() {
           <Button
             color='inherit'
             href='/temas'>
-              Temas
+            Temas
           </Button>
           <Button
             color="inherit"
             href='/acerca'>Nosotros
+          </Button>
+          <Button
+            color="inherit"
+            href='/dashboard'><BuildIcon fontSize='small' color='disabled' />
           </Button>
         </Toolbar>
       </AppBar>

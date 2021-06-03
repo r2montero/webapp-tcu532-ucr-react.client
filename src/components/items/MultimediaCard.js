@@ -31,7 +31,7 @@ const cardUseStyles = makeStyles((theme) => ({
   },
   cardContent: {
     maxHeight: '100%',
-    maxWidth: '100%',
+    maxwidth: '100%',
   },
   gridContent: {
     height: '300px',
@@ -99,14 +99,14 @@ export const MultimediaCard = (multi) => {
                 <Button size="small" color="primary" href={multi.link} target='_blank' rel="noreferrer">
                   Abrir
                     </Button>
-                <Button size="small" color="primary"  target='_blank' rel="noreferrer">
+                <Button size="small" color="primary" target='_blank' rel="noreferrer">
                   Editar
                 </Button>
-                
+
                 <Button size="small" color="primary" >
                   Eliminar
                 </Button>
-                
+
                 <Button size="small" color="primary">
                   test
                     </Button>

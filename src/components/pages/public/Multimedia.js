@@ -13,7 +13,6 @@ import audio from '../../../assets/imgs/audio.png';
 import docs from '../../../assets/imgs/docs.png';
 import otro from '../../../assets/imgs/otro.png';
 import video from '../../../assets/imgs/video.png';
-import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -129,14 +128,14 @@ export default function Multimedia() {
             break;
     }
 
-    
+
 
     return (
 
         <React.Fragment>
             <CssBaseline />
             <main>
-                <Container className={classes.cardGrid} maxWidth="md">
+                <Container className={classes.cardGrid} maxwidth="md">
 
                     <Grid container spacing={2}>
                         {multi.map((item) => (

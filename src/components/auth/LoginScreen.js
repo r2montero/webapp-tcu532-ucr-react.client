@@ -95,7 +95,11 @@ export const LoginScreen = () => {
                 Trabajo Comunal Universitario
 						  </span>
               <p className="txt2">532</p>
+              <br />
+              <a href="/"><p className="txt2">Volver al inicio</p></a>
             </div>
+
+
 
             <div className="w-full text-center">
               <p className="txt3">Universidad de Costa Rica</p>

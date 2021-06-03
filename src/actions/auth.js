@@ -60,13 +60,7 @@ export const startChecking = () => {
 
                 console.log('Token Ok!')
             } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'No puede acceder',
-                    text: msg,
-                    footer: 'Debe iniciar sesión',
-                    backdrop: `rgba(65,173,231,0.6)`
-                });
+                console.log(msg);
                 dispatch(checkingFinish());
             }
         } catch (error) {
