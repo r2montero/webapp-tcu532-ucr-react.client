@@ -9,6 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { uiCloseForm } from '../../actions/ui';
 import { sectionClearActive, sectionStartAddNew, sectionStartDelete, sectionStartUpdate } from '../../actions/sections';
+import Swal from 'sweetalert2';
 
 const initSection = {
     name: '',
@@ -77,7 +78,26 @@ export const SectionFormDialog = () => {
     };
 
     const handleDelete = () => {
-        dispatch(sectionStartDelete());
+        Swal.fire({
+            title: '¿Desea eliminar la sección?',
+            text: "Esta acción no se puede revertir",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                dispatch(sectionStartDelete());
+                Swal.fire(
+                    'Eliminado',
+                    'La sección se eliminó de la base de datos',
+                    'success'
+                )
+            }
+        });
+
         handleClose();
     }
 

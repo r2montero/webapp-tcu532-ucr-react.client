@@ -1,7 +1,8 @@
 import Swal from "sweetalert2";
 import { types } from "../types/types";
-import { cleanSectionsLogout } from '../actions/sections'
 import { request } from "../helpers/requestsHelper";
+import { cleanMultiLogout } from "./multi";
+import { cleanSectionsLogout } from '../actions/sections';
 
 export const startLogin = (email, password) => {
 
@@ -81,6 +82,7 @@ export const startLogout = () => {
     return (dispatch) => {
         localStorage.clear();
         dispatch(cleanSectionsLogout());
+        dispatch(cleanMultiLogout());
         dispatch(logOut());
     }
 }

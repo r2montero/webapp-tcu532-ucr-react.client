@@ -94,32 +94,33 @@ export const MultimediaCard = (multi) => {
                 <Typography variant="h6">
                   {multi.type}
                 </Typography>
+                <Typography variant="body2">
+                  {description}
+                </Typography>
+                <CardActions>
+                  <Button size="small" color="primary" href={multi.link} target='_blank' rel="noreferrer">
+                    Abrir
+                    </Button>
+                  <Button size="small" color="primary" target='_blank' rel="noreferrer">
+                    Editar
+                </Button>
+
+                  <Button size="small" color="primary" >
+                    Eliminar
+                </Button>
+
+                  <Button size="small" color="primary">
+                    test
+                    </Button>
+
+                </CardActions>
               </CardContent>
-              <CardActions>
-                <Button size="small" color="primary" href={multi.link} target='_blank' rel="noreferrer">
-                  Abrir
-                    </Button>
-                <Button size="small" color="primary" target='_blank' rel="noreferrer">
-                  Editar
-                </Button>
 
-                <Button size="small" color="primary" >
-                  Eliminar
-                </Button>
-
-                <Button size="small" color="primary">
-                  test
-                    </Button>
-
-              </CardActions>
             </Card>
           </Grid>
 
         </Grid>
       </Container>
-
-
-
     </div>
 
   );

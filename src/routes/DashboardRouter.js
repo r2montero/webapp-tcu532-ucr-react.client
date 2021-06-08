@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Navbar from '../components/navigation/Navbar';
 import Inicio from '../components/pages/admin/Inicio';
 import Temas from '../components/pages/admin/Temas';
-import Multimedia from '../components/pages/admin/Multimedia';
+import Multimedia from '../components/pages/admin/MultimediaScreen';
 import Configuracion from '../components/pages/admin/Configuracion';
 
 import '../assets/css/App.css';

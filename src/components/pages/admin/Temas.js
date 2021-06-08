@@ -23,7 +23,7 @@ export default function Temas() {
 
     return (
         <>
-            <h2>Temas / Secciones</h2>
+            <h2 className='dash-title'>Temas / Secciones</h2>
             <div>
                 <Button
                     variant="contained"
