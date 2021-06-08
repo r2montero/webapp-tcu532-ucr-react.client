@@ -171,7 +171,7 @@ export default function Header() {
     dispatch(startLogout());
   }
 
-  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+  const { header, logo, toolbar, drawerContainer } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
@@ -201,31 +201,35 @@ export default function Header() {
       <Toolbar className={toolbar}>
         {femmecubatorLogo}
         <Button
-            color="inherit"
-            href="/dashboard">Inicio
+          color="inherit"
+          href="/dashboard">Inicio
           </Button>
 
-          <Button
-            color="inherit"
-            href='/dashboard/materiales'>Multimedia
+        <Button
+          color="inherit"
+          href='/dashboard/materiales'>Multimedia
           </Button>
 
-          <Button
-            color="inherit"
-            href='/dashboard/temas'>Temas
+        <Button
+          color="inherit"
+          href='/dashboard/temas'>Temas
           </Button>
 
-          <Button
-            color="inherit"
-            href='/dashboard/config'>Configuración
+        <Button
+          color="inherit"
+          href='/dashboard/config'>Configuración
           </Button>
 
-          <Button
-            onClick={handleLogout}
-            color="inherit">
-            <ExitToApp /> <span>&nbsp;Salir</span>
-          </Button>
- 
+        <Typography color="inherit">
+          <AccountBox /><span>&nbsp;{name}</span>
+        </Typography>
+
+        <Button
+          onClick={handleLogout}
+          color="inherit">
+          <ExitToApp /> <span>&nbsp;Salir</span>
+        </Button>
+
       </Toolbar>
     );
   };
