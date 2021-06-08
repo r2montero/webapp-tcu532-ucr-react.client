@@ -86,10 +86,11 @@ export const MultimediaGrid = () => {
         dispatch(uiOpenForm());
     }
 
-    const handleDelete = () => {
+    const handleDelete = (m) => {
+        dispatch(multiSetActive(m));
         Swal.fire({
             title: '¿Desea eliminar el archivo?',
-            text: "Esta acción no se puede revertir",
+            text: 'Esta acción no se puede revertir',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -140,7 +141,7 @@ export const MultimediaGrid = () => {
                                     <Button onClick={() => handleEdit(m)} size='small' color='primary'>
                                         Editar
                                     </Button>
-                                    <Button onClick={handleDelete} size='small' color='secondary'>
+                                    <Button onClick={() => handleDelete(m)} size='small' color='secondary'>
                                         Borrar
                                     </Button>
                                 </CardActions>
