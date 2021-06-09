@@ -111,19 +111,11 @@ import { AccountBox, ExitToApp } from '@material-ui/icons';
 const headersData = [
   {
     label: "Inicio",
-    href: "/",
+    href: "/dashboard",
   },
   {
     label: "Multimedia",
-    href: "/multimedia",
-  },
-  {
-    label: "Temas",
-    href: "/temas",
-  },
-  {
-    label: "Nosotros",
-    href: "/acerca",
+    href: "/dashboard/materiales",
   },
   {
     label: <BuildIcon fontSize='small' color='disabled' />,
@@ -182,7 +174,7 @@ export default function Header() {
 
   useEffect(() => {
     const setResponsiveness = () => {
-      return window.innerWidth < 900
+      return window.innerWidth < 975
         ? setState((prevState) => ({ ...prevState, mobileView: true }))
         : setState((prevState) => ({ ...prevState, mobileView: false }));
     };
@@ -210,16 +202,7 @@ export default function Header() {
           href='/dashboard/materiales'>Multimedia
           </Button>
 
-        <Button
-          color="inherit"
-          href='/dashboard/temas'>Temas
-          </Button>
-
-        <Button
-          color="inherit"
-          href='/dashboard/config'>Configuración
-          </Button>
-
+        
         <Typography color="inherit">
           <AccountBox /><span>&nbsp;{name}</span>
         </Typography>

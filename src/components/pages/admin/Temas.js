@@ -9,7 +9,11 @@ import { SectionsDataGrid } from '../../items/SectionsDataGrid';
 
 const useStyles = makeStyles((theme) => ({
     button: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(3),
+       
+    },
+    div: {
+        paddingLeft: '40px',
     },
 }));
 
@@ -34,7 +38,7 @@ export default function Temas() {
             </Button>
             </div>
 
-            <div>
+            <div className={classes.div}>
                 <div>
                     <p>
                         Haga click sobre una fila para editarla o eliminarla
