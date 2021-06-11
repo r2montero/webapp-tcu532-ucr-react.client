@@ -29,6 +29,7 @@ const initMultimedia = {
     type: '',
     storage_link: '',
     description: '',
+    section: '',
     user: '',
 };
 
@@ -43,6 +44,7 @@ export const MultimediaFormDialog = () => {
     const { openForm } = useSelector(state => state.multimediaForm);
     const { activeMulti } = useSelector(state => state.multimedia);
     const { uid } = useSelector(state => state.auth);
+    const { sections } = useSelector(state => state.section);
 
     const dispatch = useDispatch();
 
@@ -50,10 +52,12 @@ export const MultimediaFormDialog = () => {
     const [validName, setValidName] = useState(initValid);
     const [validType, setValidType] = useState(initValid);
     const [validLink, setValidLink] = useState(initValid);
+    const [validSection, setValidSection] = useState(initValid);
 
-    const { name, type, storage_link, description } = formValues;
+    const { name, type, storage_link, section, description } = formValues;
     const { inValid: inValidName, message: messageName } = validName;
     const { inValid: inValidType, message: messageType } = validType;
+    const { inValid: inValidSection, message: messageSection } = validSection;
     const { inValid: inValidLink, message: messageLink } = validLink;
 
     useEffect(() => {
@@ -73,6 +77,7 @@ export const MultimediaFormDialog = () => {
         setValidName(initValid);
         setValidType(initValid);
         setValidLink(initValid);
+        setValidSection(initValid);
     }
 
     const handleSave = (e) => {
@@ -90,6 +95,14 @@ export const MultimediaFormDialog = () => {
             setValidType({
                 inValid: true,
                 message: 'Debe seleccionar el tipo de archivo'
+            });
+            return;
+        }
+
+        if (validator.isEmpty(section)) {
+            setValidSection({
+                inValid: true,
+                message: 'Debe seleccionar una seccion'
             });
             return;
         }
@@ -162,6 +175,21 @@ export const MultimediaFormDialog = () => {
                                 <option value={'Otro'}>Otro</option>
                             </Select>
                             <FormHelperText>{messageType}</FormHelperText>
+                        </FormControl>
+
+                        <FormControl required className={classes.formControl} error={inValidSection}>
+                            <InputLabel>Seleccione el tema</InputLabel>
+                            <Select
+                                native
+                                value={section}
+                                onChange={handleFormInputChange}
+                                name='section'
+                                id='section'
+                            >
+                                <option aria-label="None" value="" />
+                                {sections.map((s) => <option key={s._id} value={s.name}>{s.name}</option>)}
+                            </Select>
+                            <FormHelperText>{messageSection}</FormHelperText>
                         </FormControl>
 
                         <FormControl required className={classes.formControl}>

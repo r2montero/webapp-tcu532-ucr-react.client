@@ -18,6 +18,7 @@ import video from '../../assets/imgs/video.png';
 import { MultimediaFormDialog } from '../forms/MultimediaFormDialog';
 import { uiOpenForm } from '../../actions/ui';
 import Swal from 'sweetalert2';
+import { sectionsStartLoading } from '../../actions/sections';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -76,6 +77,10 @@ export const MultimediaGrid = () => {
 
         }
     }
+
+    useEffect(() => {
+        dispatch(sectionsStartLoading());
+    });
 
     useEffect(() => {
         dispatch(multiStartLoading());
