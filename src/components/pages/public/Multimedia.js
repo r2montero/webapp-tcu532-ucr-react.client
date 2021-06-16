@@ -104,7 +104,7 @@ export default function Multimedia() {
     const classes = useStyles();
 
     let image;
-    const description = (!multi.description ? 'Sin descripcion' : multi.description);
+    //const description = (!multi.description ? 'Sin descripcion' : multi.description);
 
     switch (multi.type) {
         case 'Audio':
