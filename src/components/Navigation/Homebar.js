@@ -82,10 +82,10 @@ const headersData = [
     label: "Multimedia",
     href: "/multimedia",
   },
-  {
+  /*{
     label: "Temas",
     href: "/temas",
-  },
+  },*/
   {
     label: "Nosotros",
     href: "/acerca",

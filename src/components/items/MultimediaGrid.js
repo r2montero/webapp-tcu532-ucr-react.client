@@ -36,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     cardContent: {
         flexGrow: 1,
     },
+    addButton:{
+        color: 'red',
+    },
 }));
 
 
@@ -143,7 +146,7 @@ export const MultimediaGrid = () => {
                                     <Button size='small' color='primary' href={m.storage_link} target='_blank'>
                                         Ver
                                     </Button>
-                                    <Button onClick={() => handleEdit(m)} size='small' color='primary'>
+                                    <Button  onClick={() => handleEdit(m)} size='small' color='primary'>
                                         Editar
                                     </Button>
                                     <Button onClick={() => handleDelete(m)} size='small' color='secondary'>

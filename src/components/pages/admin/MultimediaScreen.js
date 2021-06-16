@@ -9,7 +9,8 @@ import { MultimediaGrid } from '../../items/MultimediaGrid';
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
+    backgroundColor: '#8ed8f8',
   },
 }));
 

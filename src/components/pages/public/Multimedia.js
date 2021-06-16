@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -32,6 +32,14 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto',
         width: 'auto',
         alignItems: 'auto',
+    },
+    input:{
+        marginTop: '20px',
+        width: '300px',
+        height: '40px',
+        fontSize: '20px',
+        paddingLeft: '10px',
+        borderInlineColor: '#000000',
     },
 
 }));
@@ -105,6 +113,7 @@ export default function Multimedia() {
 
     let image;
     const description = (!multi.description ? 'Sin descripcion' : multi.description);
+    const [searchTerm, setSearchTerm] = useState('')
 
     switch (multi.type) {
         case 'Audio':
@@ -134,11 +143,20 @@ export default function Multimedia() {
 
         <React.Fragment>
             <CssBaseline />
+            <div>
+                <input className={classes.input} type='text' placeholder='Buscar...' onChange={event =>{setSearchTerm(event.target.value)}}/>
+            </div>
             <main>
                 <Container className={classes.cardGrid} maxwidth="md">
 
                     <Grid container spacing={2}>
-                        {multi.map((item) => (
+                        {multi.filter((item)=>{
+                            if(searchTerm == ''){
+                                return item
+                            }else if(item.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                                return item
+                            }
+                        }).map((item) => (
                             <Grid item xs={12} sm={6} md={4}>
                                 <Card className={classes.card}>
                                     <CardMedia

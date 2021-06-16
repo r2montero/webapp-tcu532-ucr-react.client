@@ -13,14 +13,18 @@ import { FormControl, FormHelperText, InputLabel, makeStyles, TextareaAutosize }
 import { uiCloseForm } from '../../actions/ui';
 import { multimediaStartUpdate, multiStartAddNew, multiClearActive } from '../../actions/multi';
 
+import MenuItem from '@material-ui/core/MenuItem';
+
+
 const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
     },
     formControl: {
-        margin: theme.spacing(2),
-        minWidth: 200,
+        margin: theme.spacing(1),
+        minWidth: 190,
+        paddingLeft: '1rem',
     },
 }));
 
@@ -133,6 +137,21 @@ export const MultimediaFormDialog = () => {
         setFormValues(initMultimedia);
     };
 
+    const [age, setAge] = React.useState('');
+    const [open, setOpen] = React.useState(false);
+
+    const handleChange = (event) => {
+        setAge(event.target.value);
+    };
+
+    const handleClose2 = () => {
+        setOpen(false);
+    };
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
     return (
         <>
             <Dialog open={openForm} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -158,7 +177,7 @@ export const MultimediaFormDialog = () => {
                         </FormControl>
 
                         <FormControl required className={classes.formControl} error={inValidType}>
-                            <InputLabel>Seleccione el tipo</InputLabel>
+                            <InputLabel id="demo-controlled-open-select-label">Seleccione el tipo</InputLabel>
                             <Select
                                 native
                                 value={type}
@@ -186,7 +205,7 @@ export const MultimediaFormDialog = () => {
                                 name='section'
                                 id='section'
                             >
-                                <option aria-label="None" value="" />
+                                <MenuItem aria-label="None" value="" />
                                 {sections.map((s) => <option key={s._id} value={s.name}>{s.name}</option>)}
                             </Select>
                             <FormHelperText>{messageSection}</FormHelperText>
@@ -221,7 +240,7 @@ export const MultimediaFormDialog = () => {
 
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary" size='small' variant='outlined'>
+                    <Button onClick={handleClose} color="error" size='small' variant='outlined'>
                         Cancelar
                     </Button>
 

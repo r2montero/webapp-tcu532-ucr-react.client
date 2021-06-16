@@ -20,7 +20,7 @@ export const PublicPagesRouter = () => {
                     <Route exact path='/' component={Home} />
                     <Route exact path='/multimedia' component={Multimedia} />
                     <Route exact path='/acerca' component={Aboutus} />
-                    <Route exact path='/temas' component={Temas} />
+                    
                     <Route exact path='/404' component={NotFound404} />
 
                     <Redirect to='/404' />
