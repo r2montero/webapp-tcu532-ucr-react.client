@@ -9,8 +9,9 @@ import { Card, CardContent } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: "#7A7A7A",
-    // marginTop: theme.spacing(8),
+    marginTop: theme.spacing(8),
     padding: theme.spacing(6, 0),
+    
   },
   root:{
     backgroundColor: "#7A7A7A",
