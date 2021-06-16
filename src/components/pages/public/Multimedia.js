@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -13,6 +13,8 @@ import audio from '../../../assets/imgs/audio.png';
 import docs from '../../../assets/imgs/docs.png';
 import otro from '../../../assets/imgs/otro.png';
 import video from '../../../assets/imgs/video.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { multiStartLoading } from '../../../actions/multi';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -33,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         width: 'auto',
         alignItems: 'auto',
     },
-    input:{
+    input: {
         marginTop: '20px',
         width: '300px',
         height: '40px',
@@ -44,98 +46,48 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
-const multi = [
-    {
-        _id: "609814764e57a9001513ff59",
-        name: "Sabiduria de maestros",
-        type: "Infografía",
-        storage_link: "https://www.pictoline.com/imgs/2016/10/05/a-5.png",
-        createdAt: "2021-05-09T16:57:26.763Z",
-        updatedAt: "2021-05-09T16:57:26.763Z",
-        theme: 'Economia Solidaria'
-    },
-    {
-        _id: "6098162d4e57a9001513ff5a",
-        name: "Apoyo local",
-        type: "Infografía",
-        storage_link: "https://www.pictoline.com/imgs/2021/01/15/Mu4DwwV9YS3JFLosCNpz4RME8gJScIDaBEhCD0tx.png",
-        createdAt: "2021-05-09T17:04:45.670Z",
-        updatedAt: "2021-05-09T17:04:45.670Z",
-        theme: 'Apoyo Solidario'
-    },
-    {
-        _id: "609816b84e57a9001513ff5b",
-        name: "Economia Solidaria",
-        type: "Imagen",
-        storage_link: "https://www.aciamericas.coop/IMG/arton8070.png",
-        createdAt: "2021-05-09T17:07:04.023Z",
-        updatedAt: "2021-05-09T17:07:04.023Z"
-    },
-    {
-        _id: "6098172b4e57a9001513ff5c",
-        name: "Cooperativismo",
-        type: "Vídeo",
-        storage_link: "https://youtu.be/RjysaZ_ua54",
-        createdAt: "2021-05-09T17:08:59.171Z",
-        updatedAt: "2021-05-09T17:08:59.171Z"
-    },
-    {
-        _id: "6098177d4e57a9001513ff5d",
-        name: "COVID-19",
-        type: "Vídeo",
-        storage_link: "https://youtu.be/wLzrtzVOoJg",
-        createdAt: "2021-05-09T17:10:21.194Z",
-        updatedAt: "2021-05-09T17:10:21.194Z"
-    },
-    {
-        _id: "609817ce4e57a9001513ff5e",
-        name: "Educacion Cooperativa",
-        type: "Vídeo",
-        storage_link: "https://youtu.be/wLzrtzVOoJg",
-        description: 'esto es una descripcion muy muy larga a ver como se acomoda esta vara',
-        createdAt: "2021-05-09T17:11:42.990Z",
-        updatedAt: "2021-05-09T17:11:42.990Z"
-    },
-    {
-        _id: "6098263a4e57a9001513ff5f",
-        name: "Sede Occidente",
-        type: "Imagen",
-        storage_link: "https://yt3.ggpht.com/ytc/AAUvwnhTLLIgyvhblwIxnhNSl_s0to_B5RbKi_yKa_cN=s900-c-k-c0x00ffffff-no-rj",
-        description: "Logo de la sede occidente",
-        createdAt: "2021-05-09T18:13:14.073Z",
-        updatedAt: "2021-05-09T18:13:14.073Z"
-    }
-]
-
 export default function Multimedia() {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const { multimedia } = useSelector(state => state.multimedia);
 
-    let image;
-    const description = (!multi.description ? 'Sin descripcion' : multi.description);
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useState('');
 
-    switch (multi.type) {
-        case 'Audio':
-            image = audio;
-            break;
-        case 'Documento':
-            image = docs;
-            break;
-        case 'Imagen':
-            image = multi.link;
-            break;
-        case 'Infografía':
-            image = multi.link;
-            break;
-
-        case 'Vídeo':
-            image = video;
-            break;
-        default:
-            image = otro;
-            break;
+    const description = (desc) => {
+        if (!desc) {
+            return 'Sin descripcion';
+        } else {
+            return desc;
+        }
     }
+
+    const imageToShow = (link, type) => {
+        switch (type) {
+            case 'Audio':
+                return audio;
+
+            case 'Documento':
+                return docs;
+
+            case 'Imágen':
+                return link;
+
+            case 'Infografía':
+                return link;
+
+
+            case 'Vídeo':
+                return video;
+
+            default:
+                return otro;
+
+        }
+    }
+
+    useEffect(() => {
+        dispatch(multiStartLoading());
+    }, [dispatch]);
 
 
 
@@ -144,16 +96,16 @@ export default function Multimedia() {
         <React.Fragment>
             <CssBaseline />
             <div>
-                <input className={classes.input} type='text' placeholder='Buscar...' onChange={event =>{setSearchTerm(event.target.value)}}/>
+                <input className={classes.input} type='text' placeholder='Buscar...' onChange={event => { setSearchTerm(event.target.value) }} />
             </div>
             <main>
                 <Container className={classes.cardGrid} maxwidth="md">
 
                     <Grid container spacing={2}>
-                        {multi.filter((item)=>{
-                            if(searchTerm == ''){
+                        {multimedia.filter((item) => {
+                            if (searchTerm == '') {
                                 return item
-                            }else if(item.name.toLowerCase().includes(searchTerm.toLowerCase())){
+                            } else if (item.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                                 return item
                             }
                         }).map((item) => (
@@ -161,7 +113,7 @@ export default function Multimedia() {
                                 <Card className={classes.card}>
                                     <CardMedia
                                         className={classes.cardMedia}
-                                        image={item.storage_link}
+                                        image={imageToShow(item.storage_link, item.type)}
                                         title={item.name}
                                     />
                                     <CardContent className={classes.cardContent}>
@@ -169,7 +121,7 @@ export default function Multimedia() {
                                             {item.name}
                                         </Typography>
                                         <Typography>
-                                            {item.description}
+                                            {description(item.description)}
                                         </Typography>
                                         <Typography>
                                             {item.type}
