@@ -15,6 +15,7 @@ import otro from '../../../assets/imgs/otro.png';
 import video from '../../../assets/imgs/video.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { multiStartLoading } from '../../../actions/multi';
+import '../../../assets/css/multimediaIndex.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,14 +35,6 @@ const useStyles = makeStyles((theme) => ({
         height: 'auto',
         width: 'auto',
         alignItems: 'auto',
-    },
-    input: {
-        marginTop: '20px',
-        width: '300px',
-        height: '40px',
-        fontSize: '20px',
-        paddingLeft: '10px',
-        borderInlineColor: '#000000',
     },
 
 }));
@@ -96,7 +89,7 @@ export default function Multimedia() {
         <React.Fragment>
             <CssBaseline />
             <div>
-                <input className={classes.input} type='text' placeholder='Buscar...' onChange={event => { setSearchTerm(event.target.value) }} />
+                <input type='text' placeholder='Buscar...' onChange={event => { setSearchTerm(event.target.value) }} className='multiInput'/>
             </div>
             <main>
                 <Container className={classes.cardGrid} maxwidth="md">
