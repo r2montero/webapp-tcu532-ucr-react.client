@@ -110,7 +110,7 @@ import { AccountBox, ExitToApp } from '@material-ui/icons';
 
 const headersData = [
   {
-    label: "Inicio",
+    label: "Temas",
     href: "/dashboard",
   },
   {
@@ -194,7 +194,7 @@ export default function Header() {
         {femmecubatorLogo}
         <Button
           color="inherit"
-          href="/dashboard">Inicio
+          href="/dashboard">Temas
           </Button>
 
         <Button

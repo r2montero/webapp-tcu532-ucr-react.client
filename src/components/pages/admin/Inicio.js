@@ -29,9 +29,9 @@ export default function Inicio() {
                 <Grid className={classes.temas}>
                     <Temas />
                 </Grid>
-                <Grid className={classes.config}>
+                {/*<Grid className={classes.config}>
                     <Config />
-                </Grid>
+                </Grid>*/}
             
         </>
     );
